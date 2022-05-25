@@ -1,0 +1,86 @@
+<br>
+<div class="container">
+    <h2 class="text-center">Formulario de registro</h2>
+    <form class="needs-validation">
+        <div class="row">
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <label class="form-label">Nombre(s)</label>
+                <input type="text" name="nombre" class="form-control" placeholder="Ingrese su nombre">
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <label class="form-label">Apellido paterno</label>
+                <input type="text" name="apellidos" class="form-control" placeholder="Ingrese apellido paterno">
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <label class="form-label">Apellido materno</label>
+                <input class="form-control" type="text" name="apellido materno" placeholder="Ingrese apellido materno">
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <label class="form-label">Correo</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="****">
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <label class="form-label">Contraseña</label>
+                <input id="password" class="form-control" type="password" name="password" placeholder="****">
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <label class="form-label">Repetir contraseña</label>
+                <input id="repeat_password" class="form-control" type="password" name="password_repeat"
+                    placeholder="****">
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <label class="form-label">Telefono</label>
+                <input class="form-control" type="text" name="" placeholder="Ingrese correo electronico">
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <div class="dropdown">
+                    <label for="" class="form-label">Genero</label>
+                    <button class="btn btn-secondary dropdown-toggle form-control" type="button"
+                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Seleccionar
+                    </button>
+                    <ul class="dropdown-menu form-control" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Masculino</a></li>
+                        <li><a class="dropdown-item" href="#">Femenino</a></li>
+                        <li><a class="dropdown-item" href="#">Prefiero no decirlo</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <label class="form-label" for="date">Fecha de nacimiento</label>
+                <input class="form-control" type="date" name="date" placeholder="Fecha de nacimiento">
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <label class="form-label" for="date">Direccion</label>
+                <input class="form-control" type="text" name="" placeholder="Direccion">
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <label class="form-label">Nivel de estudios</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>-Seleccionar-</option>
+                    <option value="1">No estudio</option>
+                    <option value="2">Primaria incompleta</option>
+                    <option value="3">Primaria completa</option>
+                    <option value="2">Secundaria incompleta</option>
+                    <option value="3">Secundaria completa</option>
+                    <option value="2">Preparatoria incompleta</option>
+                    <option value="3">Preparatoria completa</option>
+                    <option value="2">Estudios universitarios incompletos</option>
+                    <option value="3">Estudios universitarios completos</option>
+                    <option value="2">Posgrado</option>
+                    <option value="3">Diplomado</option>
+                    <option value="3">Maestria</option>
+                    <option value="3">Doctorado</option>
+                </select>
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <label class="form-label">Cual carrera universitaria cursó?</label>
+                <button class="form-control btn think-color disabled">carrera</button>
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-center mt-3 mb-3">
+            <button class="btn btn-lg submit border-dark">
+                <span class="text-white">Registrarme</span>
+            </button>
+        </div>
+    </form>
