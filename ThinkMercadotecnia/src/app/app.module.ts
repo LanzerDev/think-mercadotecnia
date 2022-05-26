@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FormComponent } from './components/form/form.component';
 import { PaginaAdminComponent } from './components/pagina-admin/pagina-admin.component';
+import { FormsModule, NgForm } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { PaginaAdminComponent } from './components/pagina-admin/pagina-admin.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
