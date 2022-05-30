@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { Usuarios } from 'src/app/models/usuarios';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form',
@@ -21,10 +22,22 @@ export class FormComponent implements OnInit {
   public formulario:any = {};
   
   saveForm(form:any){
-    this.formulario = form.value;
-    console.log(this.formulario)
-    this.addUsuario()
-    location.reload()
+
+    Swal.fire({
+      title: 'Listo!',
+      text: 'tu formulario a sido enviado, gracias por registrarte :D',
+      icon: 'success',
+      confirmButtonText: 'Cool!',
+      timer: 2500,
+    });
+
+    setTimeout(()=>{
+      this.formulario = form.value;
+      console.log(this.formulario)
+      this.addUsuario()
+      location.reload()
+    },3000)
+
   }
 
   getUsuarios(){
@@ -41,6 +54,8 @@ export class FormComponent implements OnInit {
     console.log(this.usuario)
     this.getUsuarios()
   }
+
+
 
 
 }

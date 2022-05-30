@@ -1,28 +1,61 @@
 <br>
 <div class="container">
     <h2 class="text-center">Formulario de registro</h2>
-    <form (ngSubmit)="saveForm(form)" #form="ngForm"  class="needs-validation">
+    <form (ngSubmit)="saveForm(form)" #form="ngForm" class="needs-validation">
         <div class="row">
             <div class="col-sm-4 col-md-4 form-group mt-2">
                 <label class="form-label">Nombre(s)</label>
-                <input ngModel required type="text" name="nombre" class="form-control" placeholder="Ingrese su nombre">
+                <input type="text" name="nombre" class="form-control" placeholder="Ingrese su nombre">
             </div>
             <div class="col-sm-4 col-md-4 form-group mt-2">
                 <label class="form-label">Apellido paterno</label>
-                <input ngModel  type="text" name="apellido1" class="form-control" placeholder="Ingrese apellido paterno">
+                <input type="text" name="apellidos" class="form-control" placeholder="Ingrese sus apellidos">
             </div>
             <div class="col-sm-4 col-md-4 form-group mt-2">
                 <label class="form-label">Apellido materno</label>
-                <input ngModel class="form-control" type="text" name="apellido2" placeholder="Ingrese apellido materno">
+                <input class="form-control" type="text" name="curp" placeholder="Ingrese su CURP">
             </div>
             <div class="col-sm-4 col-md-4 form-group mt-2">
                 <label class="form-label">Correo</label>
-                <input ngModel type="email" class="form-control" name="email" id="email" placeholder="example@gmail.com">
+                <input type="email" class="form-control" name="email" id="email" placeholder="****">
             </div>
-            <div class="d-grid gap-2 d-md-flex justify-content-center mt-3 mb-3">
-                <button class="btn btn-lg submit border-dark">
-                    <span class="text-white">Registrarme</span>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <label class="form-label">Contraseña</label>
+                <input id="password" class="form-control" type="password" name="password" placeholder="****">
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+                <label class="form-label">Repetir contraseña</label>
+                <input id="repeat_password" class="form-control" type="password" name="password_repeat" placeholder="****">
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+              <label class="form-label">Telefono</label>
+              <input class="form-control" type="text" name="" placeholder="Ingrese correo electronico">
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+              <div class="dropdown">
+                <label for="" class="form-label">Genero</label>
+                <button class="btn btn-secondary dropdown-toggle form-control" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Seleccionar
                 </button>
+                <ul class="dropdown-menu form-control" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">Masculino</a></li>
+                  <li><a class="dropdown-item" href="#">Femenino</a></li>
+                  <li><a class="dropdown-item" href="#">Prefiero no decirlo</a></li>
+                </ul>
+              </div>
             </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+              <label class="form-label" for="date">Fecha de nacimiento</label>
+              <input class="form-control" type="date" name="date" placeholder="Fecha de nacimiento">
+            </div>
+            <div class="col-sm-4 col-md-4 form-group mt-2">
+              <label class="form-label" for="date">Fecha de nacimiento</label>
+              <input class="form-control" type="date" name="date" placeholder="Fecha de nacimiento">
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-center mt-3 mb-3">
+            <button class="btn btn-lg submit">
+                <span class="text-white">Registrarme</span>
+            </button>
         </div>
     </form>
