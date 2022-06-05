@@ -3,55 +3,142 @@
     <h2 class="text-center">Formulario de registro</h2>
     <form (ngSubmit)="saveForm(form)" #form="ngForm" class="needs-validation">
         <div class="row">
-            <div class="col-sm-4 col-md-4 form-group mt-2">
+            <div class="col-sm-6 col-md-4 form-group mt-2">
                 <label class="form-label">Nombre(s)</label>
-                <input type="text" name="nombre" class="form-control" placeholder="Ingrese su nombre">
+                <input type="text" name="nombre"  ngModel class="form-control" placeholder="Ingrese su nombre">
             </div>
-            <div class="col-sm-4 col-md-4 form-group mt-2">
-                <label class="form-label">Apellido paterno</label>
-                <input type="text" name="apellidos" class="form-control" placeholder="Ingrese sus apellidos">
+            <div class="col-sm-6 col-md-4 form-group mt-2">
+              <label class="form-label">Apellido paterno</label>
+              <input type="text" name="apellido1" ngModel class="form-control" placeholder="Ingrese su apellido paterno">
             </div>
-            <div class="col-sm-4 col-md-4 form-group mt-2">
-                <label class="form-label">Apellido materno</label>
-                <input class="form-control" type="text" name="curp" placeholder="Ingrese su CURP">
+            <div class="col-sm-6 col-md-4 form-group mt-2">
+              <label class="form-label">Apellido materno</label>
+              <input class="form-control" type="text" name="apellido2" ngModel placeholder="Ingrese su apellido materno">
             </div>
-            <div class="col-sm-4 col-md-4 form-group mt-2">
-                <label class="form-label">Correo</label>
-                <input type="email" class="form-control" name="email" id="email" placeholder="****">
+            <div class="col-sm-6 col-md-4 form-group mt-2">
+              <label class="form-label">Correo</label>
+              <input type="email" class="form-control" name="email" ngModel id="email" placeholder="****">
             </div>
-            <div class="col-sm-4 col-md-4 form-group mt-2">
-                <label class="form-label">Contraseña</label>
-                <input id="password" class="form-control" type="password" name="password" placeholder="****">
-            </div>
-            <div class="col-sm-4 col-md-4 form-group mt-2">
-                <label class="form-label">Repetir contraseña</label>
-                <input id="repeat_password" class="form-control" type="password" name="password_repeat" placeholder="****">
-            </div>
-            <div class="col-sm-4 col-md-4 form-group mt-2">
+            <div class="col-sm-6 col-md-4 form-group mt-2">
               <label class="form-label">Telefono</label>
-              <input class="form-control" type="text" name="" placeholder="Ingrese correo electronico">
+              <input class="form-control" type="text" name="telefono" ngModel placeholder="Ingrese su telefono">
             </div>
-            <div class="col-sm-4 col-md-4 form-group mt-2">
-              <div class="dropdown">
-                <label for="" class="form-label">Genero</label>
-                <button class="btn btn-secondary dropdown-toggle form-control" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  Seleccionar
-                </button>
-                <ul class="dropdown-menu form-control" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="#">Masculino</a></li>
-                  <li><a class="dropdown-item" href="#">Femenino</a></li>
-                  <li><a class="dropdown-item" href="#">Prefiero no decirlo</a></li>
-                </ul>
-              </div>
+            <div class="col-sm-6 col-md-4 form-group mt-2">
+              <label class="form-label">Genero</label>
+              <select name="genero" [(ngModel)]="default_option" (change)="dataChanged($event)" class="form-select mb-4"
+              aria-label=".form-select example">
+              <option *ngFor="let genero of generos_list" [value]="genero">
+                {{genero}}
+              </option>
+              <option id="default-option" selected value={{default_option}}>-Selecciona una opcion-</option>
+            </select>
             </div>
-            <div class="col-sm-4 col-md-4 form-group mt-2">
+            <div class="col-sm-6 col-md-4 form-group mt-2">
               <label class="form-label" for="date">Fecha de nacimiento</label>
-              <input class="form-control" type="date" name="date" placeholder="Fecha de nacimiento">
+              <input class="form-control" type="date" name="date" ngModel placeholder="Fecha de nacimiento">
             </div>
-            <div class="col-sm-4 col-md-4 form-group mt-2">
-              <label class="form-label" for="date">Fecha de nacimiento</label>
-              <input class="form-control" type="date" name="date" placeholder="Fecha de nacimiento">
+            <!--
+            <div class="col-sm-6 col-md-4 form-group mt-2">
+              <label class="form-label">Direccion</label>
+              <input class="form-control" placeholder="Direccion">
             </div>
+          -->
+          <div class="col-sm-6 col-md-4 form-group mt-2">
+            <label class="form-label">Nivel de estudios</label>
+            <select [(ngModel)]="estudios" name="nivel_estudios" (change)="dataChangedNivelEstudios($event)" 
+             class="form-select" aria-label="seleccionar nivel de estudios" name="nivel_estudios">
+             <option *ngFor="let estudio of estudios_list" [value]="estudio">
+              {{estudio}}
+            </option>
+              <option id="default-option-lvl-est" selected value={{estudios}}>-Selecciona una opcion-</option>
+            </select>
+          </div>
+          <div class="col-sm-6 col-md-4 form-group mt-2">
+            <label class="form-label">Tiene estudios universitarios?</label>
+            <select class="form-select" aria-label="seleccionar carrera" name="estudios_universitarios" id="estudios_uni" ngModel disabled>
+              <option selected>-Seleccionar-</option>
+              <option value="Administracion de empresas">Administracion de empresas</option>
+              <option value="Contabilidad">Contabilidad</option>
+              <option value="Finanzas">Finanzas</option>
+              <option value="Mercadotecnia">Mercadotecnia</option>
+              <option value="Comercio">Comercio</option>
+              <option value="Ciencias Politicas">Ciencias Politicas</option>
+              <option value="Economia">Economia</option>
+              <option value="Psicologia">Psicologia</option>
+              <option value="Sociologia y antropologia">Sociologia y antropologia</option>
+              <option value="Comunicacion">Comunicacion</option>
+              <option value="Criminologia">Criminologia</option>
+              <option value="Derecho">Derecho</option>
+              <option value="Arquitectura">Arquitectura</option>
+              <option value="Ingenieria civil">Ingenieria civil</option>
+              <option value="Electricidad">Electricidad</option>
+              <option value="Electronica y automaticacion">Electronica y automaticacion</option>
+              <option value="Ingenieria de vehiculos de motor">Ingenieria de vehiculos de motor</option>
+              <option value="Ingenieria industrial">Ingenieria industrial</option>
+              <option value="Ingenieria en metalurgia">Ingenieria en metalurgia</option>
+              <option value="Ingenieria quimica">Ingenieria quimica</option>
+              <option value="Ingenieria ambiental">Ingenieria ambiental</option>
+              <option value="Tecnologias de la informacion y la comunicacion">Tecnologias de la informacion y la comunicacion</option>
+              <option value="Mineria y extraccion">Mineria y extraccion</option>
+              <option value="Gastronomia">Gastronomia</option>
+              <option value="Ciencias de la computacion">Ciencias de la computacion</option>
+              <option value="Ingenieria de software">Ingenieria de software</option>
+              <option value="Ingenieria en sistemas">Ingenieria en sistemas</option>
+              <option value="Matematicas y estadistica">Matematicas y estadistica</option>
+              <option value="Quimico farmacobiologo">Quimico farmacobiologo</option>
+              <option value="Diseño grafico">Diseño grafico</option>
+              <option value="Formacion docente">Formacion docente</option>
+              <option value="Musica y artes escenicas">Musica y artes escenicas</option>
+              <option value="Audiovisuales y produccion">Audiovisuales y produccion</option>
+              <option value="Filosofia y letras">Filosofia y letras</option>
+              <option value="Historia y arqueologia">Historia y arqueologia</option>
+              <option value="Relaciones internacionales y politicas extranjeras">Relaciones internacionales y politicas extranjeras</option>
+              <option value="Odontologia">Odontologia</option>
+              <option value="Medicina">Medicina</option>
+              <option value="Enfermeria">Enfermeria</option>
+              <option value="Terapia y rehabilitacion">Terapia y rehabilitacion</option>
+              <option value="Veterinaria">Veterinaria</option>
+              <option value="Produccion y explotacion agricola y ganadera">Produccion y explotacion agricola y ganadera</option>
+            </select>
+          </div>
+          <!--
+          <div class="col-sm-6 col-md-4 form-group mt-2">
+            <label class="form-label">Ocupacion</label>
+            <input class="form-control" type="text" placeholder="Que estudio?">
+          </div>
+            <div class="col-sm-6 col-md-4 form-group mt-2">
+              <label class="form-label">Nivel de ingresos</label>
+              <input class="form-control" placeholder="escribe algo">
+            </div>
+            <div class="col-sm-6 col-md-4 form-group mt-2">
+              <label class="form-label">Estado civil</label>
+              <input class="form-control" placeholder="escribe algo">
+            </div>
+            <div class="col-sm-6 col-md-4 form-group mt-2">
+              <label class="form-label">Tiene hijos?</label>
+              <input class="form-control" placeholder="escribe algo">
+            </div>
+            <div class="col-sm-6 col-md-4 form-group mt-2">
+              <label class="form-label">Cuantos hijos tiene?</label>
+              <input class="form-control" placeholder="escribe algo">
+            </div>
+            <div class="col-sm-6 col-md-4 form-group mt-2">
+              <label class="form-label">Cuantos automoviles tiene en su hogar?</label>
+              <input class="form-control" placeholder="escribe algo">
+            </div>
+            <div class="col-sm-6 col-md-4 form-group mt-2">
+              <label class="form-label">Cuenta con internet?</label>
+              <input class="form-control" placeholder="escribe algo">
+            </div>
+            <div class="col-sm-6 col-md-4 form-group mt-2">
+              <label class="form-label">Cuantas personas viven en su hogar?</label>
+              <input class="form-control" placeholder="escribe algo">
+            </div>
+            <div class="col-sm-6 col-md-4 form-group mt-2">
+              <label class="form-label">Cuantas personas trabajaron en el ultimo mes?</label>
+              <input class="form-control" placeholder="escribe algo">
+            </div>
+            -->
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-center mt-3 mb-3">
             <button class="btn btn-lg submit">
