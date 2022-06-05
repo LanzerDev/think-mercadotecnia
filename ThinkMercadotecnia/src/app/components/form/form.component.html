@@ -25,7 +25,7 @@
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Genero</label>
-        <select name="genero" [(ngModel)]="default_option" (change)="dataChanged($event)" class="form-select mb-4"
+        <select name="genero" [(ngModel)]="default_option" (change)="dataChanged($event)" class="form-select"
           aria-label=".form-select example">
           <option *ngFor="let genero of generos_list" [value]="genero">
             {{genero}}
