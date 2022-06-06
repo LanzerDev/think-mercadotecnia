@@ -19,15 +19,12 @@ export class FormComponent implements OnInit {
     this.user = {name: ''}
    }
    public estudios_select:any;
-   public numero_hijos:any;
+
 
   //---------init----------- 
   ngOnInit(): void {
 
     // deshabilito selects opcionales
-    this.numero_hijos = document.getElementById('numero_hijos');
-    this.numero_hijos.setAttribute("disabled", "true")
-
     this.estudios_select = document.getElementById('estudios_uni')
     this.estudios_select.setAttribute("disabled", "true")
     this.getUsuarios()
@@ -223,19 +220,21 @@ export class FormComponent implements OnInit {
       this.default_tiene_hijos = document.getElementById('default-option-tiene_hijos')
       this.default_tiene_hijos.remove()
     }
+  }
 
-    if(this.tiene_hijos === 'Si'){
-      if(this.tiene_hijos === 'Si'){
-        if(document.getElementById('estudios_uni')){
-          this.numero_hijos = document.getElementById('numero_hijos')
-          this.numero_hijos.removeAttribute("disabled")
-        }
-      } else {
-        this.numero_hijos = document.getElementById('numero_hijos')
-        this.numero_hijos.setAttribute("disabled", "true")
-      }
+  //----------select-tiene-internet--------
+  public tiene_internet_list = [
+    "Si",
+    "No",
+  ]
+  public tiene_internet = '';
+  public default_tiene_internet:any;
+  public tiene_internet_select:any;
+  dataChangedTieneInternet(newObj:any) {
+    if(document.getElementById('default-option-tiene_internet')){
+      this.default_tiene_internet = document.getElementById('default-option-tiene_internet')
+      this.default_tiene_internet.remove()
     }
-
   }
 
 
@@ -285,3 +284,5 @@ export class FormComponent implements OnInit {
 
 
 }
+
+// ng deploy --base-href=https://LanzerDev.github.io/think-mercadotecnia/   

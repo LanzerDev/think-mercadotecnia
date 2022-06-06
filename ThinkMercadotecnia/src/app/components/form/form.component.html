@@ -42,6 +42,7 @@
               <label class="form-label">Direccion</label>
               <input class="form-control" placeholder="Direccion">
             </div>
+            
           -->
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Nivel de estudios</label>
@@ -54,7 +55,7 @@
         </select>
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
-        <label class="form-label">Tiene estudios universitarios?</label>
+        <label class="form-label">¿Tiene estudios universitarios?</label>
         <select [(ngModel)]="carreras" name="carrera" class="form-select" aria-label="seleccionar carrera"
           id="estudios_uni" (change)="dataChangedCarrera($event)">
           <option *ngFor="let carrera of carreras_list" [value]="carrera">
@@ -94,37 +95,40 @@
         </select>
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
-        <label class="form-label">Tiene hijos?</label>
+        <label class="form-label">¿Tiene hijos?</label>
         <select [(ngModel)]="tiene_hijos" name="tiene_hijos" class="form-select" aria-label="seleccionar ingresos"
-        (change)="dataChangedTieneHijos($event)">
-        <option *ngFor="let tiene_hijos of tiene_hijos_list" [value]="tiene_hijos">
-          {{tiene_hijos}}
+          (change)="dataChangedTieneHijos($event)">
+          <option *ngFor="let tiene_hijos of tiene_hijos_list" [value]="tiene_hijos">
+            {{tiene_hijos}}
+          </option>
+          <option id="default-option-tiene_hijos" selected value={{tiene_hijos}}>-Selecciona una opcion-</option>
+        </select>
+      </div>
+
+      <div class="col-sm-6 col-md-4 form-group mt-2">
+        <label class="form-label">¿Cuántos automóviles tiene en su hogar?</label>
+        <input class="form-control" type="number" ngModel name="numero_automoviles" placeholder="...">
+      </div>
+      <div class="col-sm-6 col-md-4 form-group mt-2">
+        <label class="form-label">Cuenta con internet?</label>
+        <select [(ngModel)]="tiene_internet" name="tiene_internet" class="form-select" aria-label="internet"
+        (change)="dataChangedTieneInternet($event)">
+        <option *ngFor="let tiene_internet of tiene_internet_list" [value]="tiene_internet">
+          {{tiene_internet}}
         </option>
-        <option id="default-option-tiene_hijos" selected value={{tiene_hijos}}>-Selecciona una opcion-</option>
+        <option id="default-option-tiene_internet" selected value={{tiene_internet}}>-Selecciona una opcion-</option>
       </select>
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
-        <label class="form-label">Cuantos hijos tiene?</label>
-        <input class="form-control" type="number" name="numero_hijos" ngModel placeholder="..." id="numero_hijos">
+        <label class="form-label">¿Cuántas personas viven en su hogar?</label>
+        <input class="form-control" type="number" ngModel name="numero_personas_hogar" placeholder="...">
+      </div>
+      <div class="col-sm-6 col-md-4 form-group mt-2">
+        <label class="form-label">¿Cuántas personas trabajaron en el último mes?</label>
+        <input class="form-control" type="number" ngModel name="numero_personas_trabajaron" placeholder="...">
       </div>
       <!--
-            <div class="col-sm-6 col-md-4 form-group mt-2">
-              <label class="form-label">Cuantos automoviles tiene en su hogar?</label>
-              <input class="form-control" placeholder="escribe algo">
-            </div>
-            <div class="col-sm-6 col-md-4 form-group mt-2">
-              <label class="form-label">Cuenta con internet?</label>
-              <input class="form-control" placeholder="escribe algo">
-            </div>
-            <div class="col-sm-6 col-md-4 form-group mt-2">
-              <label class="form-label">Cuantas personas viven en su hogar?</label>
-              <input class="form-control" placeholder="escribe algo">
-            </div>
-            <div class="col-sm-6 col-md-4 form-group mt-2">
-              <label class="form-label">Cuantas personas trabajaron en el ultimo mes?</label>
-              <input class="form-control" placeholder="escribe algo">
-            </div>
-            -->
+    -->
     </div>
     <div class="d-grid gap-2 d-md-flex justify-content-center mt-3 mb-3">
       <button class="btn btn-lg submit">
