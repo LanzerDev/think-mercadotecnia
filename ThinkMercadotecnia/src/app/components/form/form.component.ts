@@ -136,7 +136,6 @@ export class FormComponent implements OnInit {
   public default_carrera:any;
   public carrera_select:any;
   dataChangedCarrera(newObj:any) {
-    console.log(this.carreras)
     if(document.getElementById('default-option-carrera')){
       this.default_carrera = document.getElementById('default-option-carrera')
       this.default_carrera.remove()
@@ -250,7 +249,6 @@ export class FormComponent implements OnInit {
 
   public formulario:any = {};
   saveForm(form:any){
-    console.log(form)
     console.log(form.value)
     Swal.fire({
       title: 'Listo!',
