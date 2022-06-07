@@ -24,6 +24,7 @@ export class FormComponent implements OnInit {
   }
   public estudios_select: any;
   public select_municipios: any;
+  public hijos_menores: any;
   //---------init----------- 
   ngOnInit(): void {
 
@@ -33,6 +34,8 @@ export class FormComponent implements OnInit {
     this.getUsuarios()
     this.select_municipios = document.getElementById('select-municipios');
     this.select_municipios.setAttribute("disabled", "true")
+    this.hijos_menores = document.getElementById('hijos_menores');
+    this.hijos_menores.setAttribute("disabled", "true");
 
   }
 
@@ -87,7 +90,7 @@ export class FormComponent implements OnInit {
       this.default.remove()
     }
   }
-  //------------select-direccion---------------------
+  //------------select-Estados---------------------
   public estados_list = [
     "Aguascalientes",
     "Baja California",
@@ -286,7 +289,27 @@ export class FormComponent implements OnInit {
       this.default_tiene_hijos = document.getElementById('default-option-tiene_hijos')
       this.default_tiene_hijos.remove()
     }
+    if(this.tiene_hijos == 'Si'){
+      this.hijos_menores.removeAttribute("disabled")
+    } else {
+      this.hijos_menores.setAttribute("disabled", "true");
+    }
   }
+
+    //-------------select-tiene-menores de 18---------
+    public tiene_hijos_menores18_list = [
+      "Si",
+      "No",
+    ]
+    public tiene_hijos_menores18 = '';
+    public default_tiene_hijos_menores18: any;
+    public tiene_hijos_menores18_select: any;
+    dataChangedTieneHijosMenores18(newObj: any) {
+      if (document.getElementById('default-option-tiene_hijos_menores18')) {
+        this.default_tiene_hijos_menores18 = document.getElementById('default-option-tiene_hijos_menores18')
+        this.default_tiene_hijos_menores18.remove()
+      }
+    }
 
   //----------select-tiene-internet--------
   public tiene_internet_list = [

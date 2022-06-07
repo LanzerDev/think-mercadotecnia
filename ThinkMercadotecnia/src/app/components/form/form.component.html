@@ -20,11 +20,11 @@
         <input type="email" class="form-control" name="email" ngModel id="email" placeholder="Ingrese su email">
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
-        <label class="form-label">Telefono</label>
+        <label class="form-label">Teléfono</label>
         <input class="form-control" type="text" name="telefono" ngModel placeholder="Ingrese su telefono">
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
-        <label class="form-label">Genero</label>
+        <label class="form-label">Género</label>
         <select name="genero" [(ngModel)]="default_option" (change)="dataChanged($event)" class="form-select"
           aria-label=".form-select example">
           <option *ngFor="let genero of generos_list" [value]="genero">
@@ -68,7 +68,7 @@
         </select>
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
-        <label class="form-label">¿Tiene estudios universitarios?</label>
+        <label class="form-label">¿Que carrera completo?</label>
         <select [(ngModel)]="carreras" name="carrera" class="form-select" aria-label="seleccionar carrera"
           id="estudios_uni" (change)="dataChangedCarrera($event)">
           <option *ngFor="let carrera of carreras_list" [value]="carrera">
@@ -78,7 +78,7 @@
         </select>
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
-        <label class="form-label">Ocupacion</label>
+        <label class="form-label">Ocupación</label>
         <select [(ngModel)]="ocupaciones" name="ocupacion" class="form-select" aria-label="seleccionar carrera"
           (change)="dataChangedOcupacion($event)">
           <option *ngFor="let ocupacion of ocupaciones_list" [value]="ocupacion">
@@ -109,7 +109,7 @@
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">¿Tiene hijos?</label>
-        <select [(ngModel)]="tiene_hijos" name="tiene_hijos" class="form-select" aria-label="seleccionar ingresos"
+        <select [(ngModel)]="tiene_hijos" name="tiene_hijos" class="form-select" aria-label="seleccionar tiene hijos"
           (change)="dataChangedTieneHijos($event)">
           <option *ngFor="let tiene_hijos of tiene_hijos_list" [value]="tiene_hijos">
             {{tiene_hijos}}
@@ -117,13 +117,22 @@
           <option id="default-option-tiene_hijos" selected value={{tiene_hijos}}>-Selecciona una opcion-</option>
         </select>
       </div>
-
+      <div class="col-sm-6 col-md-4 form-group mt-2">
+        <label class="form-label">¿Tiene hijos menores de 18?</label>
+        <select [(ngModel)]="tiene_hijos_menores18" id="hijos_menores" name="tiene_hijos_menores18" class="form-select" aria-label="seleccionar hijos menores 18"
+          (change)="dataChangedTieneHijos($event)">
+          <option *ngFor="let tiene_hijos_menores18 of tiene_hijos_menores18_list" [value]="tiene_hijos_menores18">
+            {{tiene_hijos_menores18}}
+          </option>
+          <option id="default-option-tiene_hijos_menores18" selected value={{tiene_hijos_menores18}}>-Selecciona una opcion-</option>
+        </select>
+      </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">¿Cuántos automóviles tiene en su hogar?</label>
         <input class="form-control" type="number" ngModel name="numero_automoviles" placeholder="...">
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
-        <label class="form-label">Cuenta con internet?</label>
+        <label class="form-label">¿Cuenta con internet?</label>
         <select [(ngModel)]="tiene_internet" name="tiene_internet" class="form-select" aria-label="internet"
         (change)="dataChangedTieneInternet($event)">
         <option *ngFor="let tiene_internet of tiene_internet_list" [value]="tiene_internet">
@@ -137,7 +146,7 @@
         <input class="form-control" type="number" ngModel name="numero_personas_hogar" placeholder="...">
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
-        <label class="form-label">¿Cuántas personas trabajaron en el último mes?</label>
+        <label class="form-label">¿Cuántas personas de las que viven en su hogar trabajaron en el último mes?</label>
         <input class="form-control" type="number" ngModel name="numero_personas_trabajaron" placeholder="...">
       </div>
       <!--
