@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Nombre(s)</label>
-        <input type="text" name="nombre" ngModel class="form-control" placeholder="Ingrese su nombre">
+        <input type="text" name="nombre" ngModel class="form-control" placeholder="Ingrese su nombre" required="true">
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Apellido paterno</label>
@@ -129,7 +129,7 @@
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">¿Cuántos automóviles tiene en su hogar?</label>
-        <input class="form-control" type="number" ngModel name="numero_automoviles" placeholder="...">
+        <input class="form-control" type="number" min="0" ngModel name="numero_automoviles" placeholder="...">
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">¿Cuenta con internet?</label>
@@ -143,11 +143,11 @@
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">¿Cuántas personas viven en su hogar?</label>
-        <input class="form-control" type="number" ngModel name="numero_personas_hogar" placeholder="...">
+        <input class="form-control" type="number" min="0" ngModel name="numero_personas_hogar" placeholder="...">
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">¿Cuántas personas de las que viven en su hogar trabajaron en el último mes?</label>
-        <input class="form-control" type="number" ngModel name="numero_personas_trabajaron" placeholder="...">
+        <input class="form-control" type="number" min="0" ngModel name="numero_personas_trabajaron" placeholder="...">
       </div>
       <!--
     -->
