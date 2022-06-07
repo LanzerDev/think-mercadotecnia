@@ -37,13 +37,26 @@
         <label class="form-label" for="date">Fecha de nacimiento</label>
         <input class="form-control" type="date" name="date" ngModel placeholder="Fecha de nacimiento">
       </div>
-      <!--
-            <div class="col-sm-6 col-md-4 form-group mt-2">
-              <label class="form-label">Direccion</label>
-              <input class="form-control" placeholder="Direccion">
-            </div>
-            
-          -->
+      <div class="col-sm-6 col-md-4 form-group mt-2">
+        <label class="form-label">Estado</label>
+        <select [(ngModel)]="estados"  (change)="dataChangedEstados($event)"
+        class="form-select" aria-label="seleccionar estado" name="estado">
+        <option *ngFor="let estado of estados_list" [value]="estado">
+          {{estado}}
+        </option>
+        <option id="default-option-estados" selected value={{estados}}>-Selecciona una opcion-</option>
+      </select>
+      </div>     
+      <div class="col-sm-6 col-md-4 form-group mt-2">
+        <label class="form-label">Municipio</label>
+        <select [(ngModel)]="municipios" (change)="dataChangedMunicipios($event)"
+        class="form-select" aria-label="seleccionar estado" name="municipio" id="select-municipios">
+        <option *ngFor="let municipio of municipios_list" [value]="municipio">
+          {{municipio}}
+        </option>
+        <option id="default-option-municipio" selected value={{municipios}}>-Selecciona una opcion-</option>
+      </select>
+      </div>     
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Nivel de estudios</label>
         <select [(ngModel)]="estudios" name="nivel_estudios" (change)="dataChangedNivelEstudios($event)"

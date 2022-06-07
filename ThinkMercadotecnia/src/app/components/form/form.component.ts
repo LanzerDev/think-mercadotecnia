@@ -3,6 +3,7 @@ import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { Usuarios } from 'src/app/models/usuarios';
 import Swal from 'sweetalert2';
+import { UbicacionService } from 'src/app/services/ubicacion.service';
 
 @Component({
   selector: 'app-form',
@@ -14,13 +15,15 @@ export class FormComponent implements OnInit {
   public user;
 
 
-  constructor() {
+  constructor(
+    public _ubicacion: UbicacionService
+  ) {
     this.usuario = []
-    this.user = {name: ''}
-   }
-   public estudios_select:any;
+    this.user = { name: '' }
 
-
+  }
+  public estudios_select: any;
+  public select_municipios: any;
   //---------init----------- 
   ngOnInit(): void {
 
@@ -28,41 +31,44 @@ export class FormComponent implements OnInit {
     this.estudios_select = document.getElementById('estudios_uni')
     this.estudios_select.setAttribute("disabled", "true")
     this.getUsuarios()
+    this.select_municipios = document.getElementById('select-municipios');
+    this.select_municipios.setAttribute("disabled", "true")
+
   }
 
-    //-----------select-nivel-estudios-------
-    public estudios_list = [
-      "No estudio",
-      "Primaria incompleta",
-      "Primaria completa",
-      "Secundaria incompleta",
-      "Secundaria completa",
-      "Preparatoria incompleta",
-      "Preparatoria completa",
-      "Estudios universitarios incompletos",
-      "Estudios universitarios completos",
-      "Posgrado",
-      "Diplomado",
-      "Doctorado",
-    ]
-    public estudios = '';
-    public default_lvl_est:any;
+  //-----------select-nivel-estudios-------
+  public estudios_list = [
+    "No estudio",
+    "Primaria incompleta",
+    "Primaria completa",
+    "Secundaria incompleta",
+    "Secundaria completa",
+    "Preparatoria incompleta",
+    "Preparatoria completa",
+    "Estudios universitarios incompletos",
+    "Estudios universitarios completos",
+    "Posgrado",
+    "Diplomado",
+    "Doctorado",
+  ]
+  public estudios = '';
+  public default_lvl_est: any;
 
-    dataChangedNivelEstudios(newObj:any) {
-      if(document.getElementById('default-option-lvl-est')){
-        this.default_lvl_est = document.getElementById('default-option-lvl-est')
-        this.default_lvl_est.remove()
-      }
-      if(this.estudios === 'Estudios universitarios completos'|| this.estudios === 'Posgrado' || this.estudios === 'Diplomado' || this.estudios === 'Doctorado') {
-        if(document.getElementById('estudios_uni')){
-          this.estudios_select = document.getElementById('estudios_uni')
-          this.estudios_select.removeAttribute("disabled")
-        }
-      } else {
-        this.estudios_select = document.getElementById('estudios_uni')
-        this.estudios_select.setAttribute("disabled", "true")
-      }
+  dataChangedNivelEstudios(newObj: any) {
+    if (document.getElementById('default-option-lvl-est')) {
+      this.default_lvl_est = document.getElementById('default-option-lvl-est')
+      this.default_lvl_est.remove()
     }
+    if (this.estudios === 'Estudios universitarios completos' || this.estudios === 'Posgrado' || this.estudios === 'Diplomado' || this.estudios === 'Doctorado') {
+      if (document.getElementById('estudios_uni')) {
+        this.estudios_select = document.getElementById('estudios_uni')
+        this.estudios_select.removeAttribute("disabled")
+      }
+    } else {
+      this.estudios_select = document.getElementById('estudios_uni')
+      this.estudios_select.setAttribute("disabled", "true")
+    }
+  }
 
 
 
@@ -74,14 +80,74 @@ export class FormComponent implements OnInit {
     'Femenino',
     'Prefiero no decirlo'
   ]
-  public default:any;
-  dataChanged(newObj:any) {
-    if(document.getElementById('default-option')){
+  public default: any;
+  dataChanged(newObj: any) {
+    if (document.getElementById('default-option')) {
       this.default = document.getElementById('default-option')
       this.default.remove()
     }
   }
-  
+  //------------select-direccion---------------------
+  public estados_list = [
+    "Aguascalientes",
+    "Baja California",
+    "Baja California Sur",
+    "Campeche",
+    "Chiapas",
+    "Chihuahua",
+    "Ciudad de Mexico",
+    "Coahuila",
+    "Colima",
+    "Durango",
+    "Guanajuato",
+    "Guerrero",
+    "Hidalgo",
+    "Jalisco",
+    "Estado de Mexico",
+    "Michoacan",
+    "Morelos",
+    "Nayarit",
+    "Nuevo Leon",
+    "Oaxaca",
+    "Puebla",
+    "Queretaro",
+    "Quintana Roo",
+    "San Luis Potosi",
+    "Sinaloa",
+    "Tabasco",
+    "Tamaulipas",
+    "Tlaxcala",
+    "Veracruz",
+    "Yucatan",
+    "Zacatecas",
+  ]
+
+  public estados = '';
+  public default_estados: any;
+  public estados_select: any;
+ public dataChangedEstados(newObj: any) {
+  this.municipios_list = this.getMunicipios(this.estados)
+  console.log(this.estados)
+  console.log(this.municipios_list)
+    if (document.getElementById('default-option-estados')) {
+      this.default_estados = document.getElementById('default-option-estados')
+      this.default_estados.remove()
+    }
+    this.select_municipios.removeAttribute("disabled")
+  }
+
+  //-------------select-municipios------------------
+  public municipios:any = '';
+  public municipios_list:any;
+  public default_municipios: any;
+  public municipios_select: any;
+  dataChangedMunicipios(newObj: any) {
+    if (document.getElementById('default-option-municipios')) {
+      this.default_municipios = document.getElementById('default-option-municipios')
+      this.default_municipios.remove()
+    }
+  }
+
   //------------select-estudios-universitarios-carreras---------------
 
   public carreras_list = [
@@ -130,10 +196,10 @@ export class FormComponent implements OnInit {
   ]
 
   public carreras = '';
-  public default_carrera:any;
-  public carrera_select:any;
-  dataChangedCarrera(newObj:any) {
-    if(document.getElementById('default-option-carrera')){
+  public default_carrera: any;
+  public carrera_select: any;
+  dataChangedCarrera(newObj: any) {
+    if (document.getElementById('default-option-carrera')) {
       this.default_carrera = document.getElementById('default-option-carrera')
       this.default_carrera.remove()
     }
@@ -141,29 +207,29 @@ export class FormComponent implements OnInit {
 
   // --------select-ocupacion-----------
   public ocupaciones_list = [
-      "Desempleado(a)",
-      "Ama de casa",
-      "Estudiante",
-      "Empleado de tiempo completo en sector privado",
-      "Empleado de medio tiempo en el sector privado",
-      "Trabajador por cuenta propia en el sector privado",
-      "Empleado de tiempo completo en sector publico",
-      "Empleado de medio tiempo en el sector publico",
-      "Trabajador por cuenta propia en el sector publico",
-      "Retirado",
-      "Medios de comunicación",
-      "Publicidad",
-      "Mercadotecnia",
-      "Ventas",
-      "Áreas de medicina",
-      "Otro",
+    "Desempleado(a)",
+    "Ama de casa",
+    "Estudiante",
+    "Empleado de tiempo completo en sector privado",
+    "Empleado de medio tiempo en el sector privado",
+    "Trabajador por cuenta propia en el sector privado",
+    "Empleado de tiempo completo en sector publico",
+    "Empleado de medio tiempo en el sector publico",
+    "Trabajador por cuenta propia en el sector publico",
+    "Retirado",
+    "Medios de comunicación",
+    "Publicidad",
+    "Mercadotecnia",
+    "Ventas",
+    "Áreas de medicina",
+    "Otro",
   ]
 
   public ocupaciones = '';
-  public default_ocupacion:any;
-  public ocupacion_select:any;
-  dataChangedOcupacion(newObj:any) {
-    if(document.getElementById('default-option-ocupacion')){
+  public default_ocupacion: any;
+  public ocupacion_select: any;
+  dataChangedOcupacion(newObj: any) {
+    if (document.getElementById('default-option-ocupacion')) {
       this.default_ocupacion = document.getElementById('default-option-ocupacion')
       this.default_ocupacion.remove()
     }
@@ -182,10 +248,10 @@ export class FormComponent implements OnInit {
   ]
 
   public ingresos = '';
-  public default_ingresos:any;
-  public ingresos_select:any;
-  dataChangedIngresos(newObj:any) {
-    if(document.getElementById('default-option-ingresos')){
+  public default_ingresos: any;
+  public ingresos_select: any;
+  dataChangedIngresos(newObj: any) {
+    if (document.getElementById('default-option-ingresos')) {
       this.default_ingresos = document.getElementById('default-option-ingresos')
       this.default_ingresos.remove()
     }
@@ -199,10 +265,10 @@ export class FormComponent implements OnInit {
     "union libre",
   ]
   public estado_civil = '';
-  public default_estCiv:any;
-  public estCiv_select:any;
-  dataChangedEstCiv(newObj:any) {
-    if(document.getElementById('default-option-estCiv')){
+  public default_estCiv: any;
+  public estCiv_select: any;
+  dataChangedEstCiv(newObj: any) {
+    if (document.getElementById('default-option-estCiv')) {
       this.default_estCiv = document.getElementById('default-option-estCiv')
       this.default_estCiv.remove()
     }
@@ -213,10 +279,10 @@ export class FormComponent implements OnInit {
     "No",
   ]
   public tiene_hijos = '';
-  public default_tiene_hijos:any;
-  public tiene_hijos_select:any;
-  dataChangedTieneHijos(newObj:any) {
-    if(document.getElementById('default-option-tiene_hijos')){
+  public default_tiene_hijos: any;
+  public tiene_hijos_select: any;
+  dataChangedTieneHijos(newObj: any) {
+    if (document.getElementById('default-option-tiene_hijos')) {
       this.default_tiene_hijos = document.getElementById('default-option-tiene_hijos')
       this.default_tiene_hijos.remove()
     }
@@ -228,10 +294,10 @@ export class FormComponent implements OnInit {
     "No",
   ]
   public tiene_internet = '';
-  public default_tiene_internet:any;
-  public tiene_internet_select:any;
-  dataChangedTieneInternet(newObj:any) {
-    if(document.getElementById('default-option-tiene_internet')){
+  public default_tiene_internet: any;
+  public tiene_internet_select: any;
+  dataChangedTieneInternet(newObj: any) {
+    if (document.getElementById('default-option-tiene_internet')) {
       this.default_tiene_internet = document.getElementById('default-option-tiene_internet')
       this.default_tiene_internet.remove()
     }
@@ -246,8 +312,8 @@ export class FormComponent implements OnInit {
 
 
 
-  public formulario:any = {};
-  saveForm(form:any){
+  public formulario: any = {};
+  saveForm(form: any) {
     console.log(form.value)
     Swal.fire({
       title: 'Listo!',
@@ -257,16 +323,16 @@ export class FormComponent implements OnInit {
       timer: 2500,
     });
 
-    setTimeout(()=>{
+    setTimeout(() => {
       this.formulario = form.value;
-   //   this.addUsuario()
-   //   location.reload()
-    },3000)
+      //   this.addUsuario()
+      //   location.reload()
+    }, 3000)
 
   }
 
-  getUsuarios(){
-    if(localStorage.getItem("usuarios") === null){
+  getUsuarios() {
+    if (localStorage.getItem("usuarios") === null) {
       this.usuario = []
     } else {
       this.usuario = JSON.parse(localStorage.getItem("usuarios")!)
@@ -281,7 +347,10 @@ export class FormComponent implements OnInit {
   }
 
 
-
+  public getMunicipios(estado:any){
+    this.municipios = this._ubicacion.getMunicipios()
+    return this.municipios[estado]
+  }
 
 }
 
