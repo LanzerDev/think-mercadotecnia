@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Usuarios } from 'src/app/models/usuarios';
 import Swal from 'sweetalert2';
 import { UbicacionService } from 'src/app/services/ubicacion.service';
+import { Moment } from 'moment';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-form',
@@ -25,6 +27,7 @@ export class FormComponent implements OnInit {
   public estudios_select: any;
   public select_municipios: any;
   public hijos_menores: any;
+  public edad_input:any;
   //---------init----------- 
   ngOnInit(): void {
 
@@ -36,7 +39,15 @@ export class FormComponent implements OnInit {
     this.select_municipios.setAttribute("disabled", "true")
     this.hijos_menores = document.getElementById('hijos_menores');
     this.hijos_menores.setAttribute("disabled", "true");
+    this.edad_input = document.getElementById('edad_input')
+    this.edad_input.setAttribute("disabled", "true");
+  }
 
+
+  //select fecha nacimiento
+  public edad:any;
+  public dateChange(e:any){
+    this.edad = moment().diff(e.target.value, 'years')
   }
 
   //-----------select-nivel-estudios-------

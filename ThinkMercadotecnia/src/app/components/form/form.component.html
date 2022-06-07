@@ -35,7 +35,11 @@
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label" for="date">Fecha de nacimiento</label>
-        <input class="form-control" type="date" name="date" ngModel placeholder="Fecha de nacimiento">
+        <input class="form-control" type="date" name="fecha_nacimiento" (change)="dateChange($event)" ngModel placeholder="Fecha de nacimiento">
+      </div>
+      <div class="col-sm-6 col-md-4 form-group mt-2">
+        <label class="form-label">Edad</label>
+        <input class="form-control" type="text" id="edad_input" name="edad" [(value)]="edad" ngModel placeholder="Edad">
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Estado</label>
