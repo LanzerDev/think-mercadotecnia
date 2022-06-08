@@ -493,6 +493,14 @@ export class FormComponent implements OnInit {
         confirmButtonText: 'Cool!',
         timer: 2500,
       });
+
+      this.formulario = form.value;
+
+      this.addUsuario()
+      
+      setTimeout(()=>{
+        location.reload()
+      },3000)
     }
 
 
