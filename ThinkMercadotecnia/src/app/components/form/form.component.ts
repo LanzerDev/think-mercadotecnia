@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { UbicacionService } from 'src/app/services/ubicacion.service';
 import { Moment } from 'moment';
 import * as moment from 'moment';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -141,8 +142,6 @@ export class FormComponent implements OnInit {
   public estados_select: any;
  public dataChangedEstados(newObj: any) {
   this.municipios_list = this.getMunicipios(this.estados)
-  console.log(this.estados)
-  console.log(this.municipios_list)
     if (document.getElementById('default-option-estados')) {
       this.default_estados = document.getElementById('default-option-estados')
       this.default_estados.remove()
@@ -348,22 +347,167 @@ export class FormComponent implements OnInit {
 
   public formulario: any = {};
   saveForm(form: any) {
-    console.log(form.value)
-    Swal.fire({
-      title: 'Listo!',
-      text: 'tu formulario a sido enviado, gracias por registrarte :D',
-      icon: 'success',
-      confirmButtonText: 'Cool!',
-      timer: 2500,
-    });
 
-    setTimeout(() => {
-      this.formulario = form.value;
-      //   this.addUsuario()
-      //   location.reload()
-    }, 3000)
+    console.log(form.value)
+    if(form.value.nombre == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta el nombre',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.apellido1 == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta el apellido paterno',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.apellido2 == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta el apellido materno',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.email == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta el correo',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.telefono == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta el telefono',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.genero == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta el genero',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.fecha_nacimiento == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta la fecha de nacimiento',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.estado == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta el estado',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.municipio == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta el municipio',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.nivel_estudios == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta el nivel de estudios',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.ocupacion == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta su ocupacion',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.nivel_ingresos == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta su nivel de ingresos',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.estado_civil == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta el estado civil',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.tiene_hijos == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falto seleccionar el espacio "tiene hijos?"',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.tiene_internet == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falto seleccionar el espacio "¿tiene internet?"',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.numero_personas_hogar == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta el numero de personas que viven en su hogar',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else if (form.value.numero_personas_trabajaron == ''){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Falta el numero de personas que trabajaron el ultimo mes',
+        icon: 'error',
+        confirmButtonText: 'ok',
+        timer: 2000,
+      });
+    } else {
+      Swal.fire({
+        title: 'Listo!',
+        text: 'tu formulario a sido enviado, gracias por registrarte :D',
+        icon: 'success',
+        confirmButtonText: 'Cool!',
+        timer: 2500,
+      });
+    }
+
 
   }
+
+
+
+
+
+
+
+
+
+
+
 
   getUsuarios() {
     if (localStorage.getItem("usuarios") === null) {

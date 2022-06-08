@@ -1,27 +1,45 @@
 <br>
 <div class="container">
   <h2 class="text-center">Formulario de registro</h2>
-  <form (ngSubmit)="saveForm(form)" #form="ngForm" class="needs-validation">
+  <form (ngSubmit)="saveForm(form)" #form="ngForm" class="needs-validation" validate>
     <div class="row">
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Nombre(s)</label>
-        <input type="text" name="nombre" ngModel class="form-control" placeholder="Ingrese su nombre" required="true">
+        <input type="text" name="nombre" ngModel #nombre="ngModel" class="form-control" placeholder="Ingrese su nombre" required="true">
+        <small *ngIf="!nombre.valid && nombre.touched" class="invalid-feedback d-block">
+          El nombre no es válido
+        </small>
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Apellido paterno</label>
-        <input type="text" name="apellido1" ngModel class="form-control" placeholder="Ingrese su apellido paterno">
+        <input type="text" name="apellido1" ngModel #apellido1="ngModel"  class="form-control" placeholder="Ingrese su apellido paterno" required="true">
+        <small *ngIf="!apellido1.valid && apellido1.touched" class="invalid-feedback d-block">
+          El apellido paterno no es válido
+        </small>
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Apellido materno</label>
-        <input class="form-control" type="text" name="apellido2" ngModel placeholder="Ingrese su apellido materno">
+        <input class="form-control" type="text" name="apellido2" #apellido2="ngModel" ngModel placeholder="Ingrese su apellido materno" required="true">
+        <small *ngIf="!apellido2.valid && apellido2.touched" class="invalid-feedback d-block">
+          El apellido materno no es válido
+        </small>
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Correo</label>
-        <input type="email" class="form-control" name="email" ngModel id="email" placeholder="Ingrese su email">
+        <input type="email" class="form-control" name="email" ngModel #email="ngModel" id="email" placeholder="Ingrese su email" required="true">
+        <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+          El correo no es valido
+        </small>
+            <div class="invalid-feedback">
+      Please provide a valid city.
+    </div>
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Teléfono</label>
-        <input class="form-control" type="text" name="telefono" ngModel placeholder="Ingrese su telefono">
+        <input class="form-control" type="number" minlength="10" name="telefono" #telefono="ngModel" ngModel placeholder="Ingrese su telefono" required="true">
+        <small *ngIf="!telefono.valid && telefono.touched" class="invalid-feedback d-block">
+          El telefono no es valido
+        </small>
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Género</label>
@@ -157,7 +175,7 @@
     -->
     </div>
     <div class="d-grid gap-2 d-md-flex justify-content-center mt-3 mb-3">
-      <button class="btn btn-lg submit">
+      <button class="btn btn-lg submit" type="submit">
         <span class="text-white">Registrarme</span>
       </button>
     </div>
