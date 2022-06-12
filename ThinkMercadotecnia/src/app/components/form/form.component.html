@@ -90,7 +90,7 @@
         </select>
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
-        <label class="form-label">¿Que carrera completo?</label>
+        <label class="form-label">¿Que carrera completó?</label>
         <select [(ngModel)]="carreras" name="carrera" class="form-select" aria-label="seleccionar carrera"
           id="estudios_uni" (change)="dataChangedCarrera($event)">
           <option *ngFor="let carrera of carreras_list" [value]="carrera">

@@ -53,7 +53,7 @@ export class FormComponent implements OnInit {
 
   //-----------select-nivel-estudios-------
   public estudios_list = [
-    "No estudio",
+    "No estudió",
     "Primaria incompleta",
     "Primaria completa",
     "Secundaria incompleta",
