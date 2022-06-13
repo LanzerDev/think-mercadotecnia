@@ -57,7 +57,7 @@
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Edad</label>
-        <input class="form-control" type="text" id="edad_input" name="edad" [(value)]="edad" ngModel placeholder="Edad">
+        <input class="form-control" type="number" min="0" id="edad_input" name="edad" [(ngModel)]="edad" ngModel placeholder="Edad">
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Estado</label>
