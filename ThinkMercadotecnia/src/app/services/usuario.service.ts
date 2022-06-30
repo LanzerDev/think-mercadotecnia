@@ -9,10 +9,11 @@ export class UsuarioService {
   constructor(
     public _http: HttpClient,
   ) { }
-
+  public url:string = "https://formularioapi.shop"
+ // public url:string = "http://localhost:3000"
 
   public createUser(form:any){
     let headers = new HttpHeaders().set('content-type', 'application/json')
-    return this._http.post('http://103.23.60.169:3000/api/newuser',form,{headers: headers})
+    return this._http.post(this.url + '/api/newuser',form,{headers: headers})
   }
 }

@@ -5,41 +5,30 @@
     <div class="row">
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label" for="valid-name">Nombre(s)</label>
-        <input type="text" name="Nombre" id="valid-name" ngModel #Nombre="ngModel" class="form-control" placeholder="Ingrese su nombre" required>
-        <div class="invalid-feedback">
-          Please choose a username.
-        </div>
-        <small *ngIf="!Nombre.valid && Nombre.touched" class="invalid-feedback d-block">
-          El nombre no es válido
-        </small>
+        <input type="text" name="Nombre" id="valid-name" ngModel #Nombre="ngModel" class="form-control" placeholder="Ingrese su nombre">
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Apellido paterno</label>
-        <input type="text" name="Apellido_1" ngModel #Apellido_1="ngModel"  class="form-control" placeholder="Ingrese su apellido paterno" required="true">
-        <small *ngIf="!Apellido_1.valid && Apellido_1.touched" class="invalid-feedback d-block">
-          El apellido paterno no es válido
-        </small>
+        <input type="text" name="Apellido_1" ngModel #Apellido_1="ngModel"  class="form-control" placeholder="Ingrese su apellido paterno">
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Apellido materno</label>
-        <input class="form-control" type="text" name="Apellido_2" #Apellido_2="ngModel" ngModel placeholder="Ingrese su apellido materno" required="true">
-        <small *ngIf="!Apellido_2.valid && Apellido_2.touched" class="invalid-feedback d-block">
-          El apellido materno no es válido
-        </small>
+        <input class="form-control" type="text" name="Apellido_2" #Apellido_2="ngModel" ngModel placeholder="Ingrese su apellido materno">
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Correo</label>
-        <input type="email" class="form-control" name="Correo" ngModel #Correo="ngModel" id="email" placeholder="Ingrese su email" required="true">
-        <small *ngIf="!Correo.valid && Correo.touched" class="invalid-feedback d-block">
-          El correo no es valido
-        </small>
-            <div class="invalid-feedback">
-      Please provide a valid city.
-    </div>
+        <input type="email" class="form-control" name="Correo" ngModel #Correo="ngModel"
+        (keyup)="verifyEmail($event)" id="email" placeholder="Ingrese su email">
+        <div *ngIf="!emailIsValid" style="display: flex; justify-content: center; color: red;">
+          email invalido
+        </div>
       </div>
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Teléfono</label>
-        <input class="form-control" type="number" minlength="10" name="Telefono" #Telefono="ngModel" ngModel placeholder="Ingrese su telefono" required="true">
+        <input class="form-control" type="number"
+        onkeydown="javascript: return event.keyCode == 69 ? false : true"
+        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+        maxlength="10" name="Telefono" #Telefono="ngModel" ngModel placeholder="Ingrese su telefono">
         <small *ngIf="!Telefono.valid && Telefono.touched" class="invalid-feedback d-block">
           El telefono no es valido
         </small>
@@ -81,7 +70,19 @@
         </option>
         <option id="default-option-municipio" selected value={{municipios}}>-Selecciona una opción-</option>
       </select>
-      </div>     
+      </div> 
+      <div class="col-sm-6 col-md-4 form-group mt-2">
+        <label class="form-label">Calle</label>
+        <input type="text" class="form-control" name="Calle" placeholder="Ingrese calle" ngModel>
+      </div>
+      <div class="col-sm-6 col-md-4 form-group mt-2">
+        <label class="form-label">Numero</label>
+        <input type="number" class="form-control" name="Numero" placeholder="Ingrese numero de casa" ngModel>
+      </div> 
+      <div class="col-sm-6 col-md-4 form-group mt-2">
+        <label class="form-label">Colonia</label>
+        <input type="text" class="form-control" name="Colonia" placeholder="Ingrese colonia" ngModel>
+      </div> 
       <div class="col-sm-6 col-md-4 form-group mt-2">
         <label class="form-label">Nivel de estudios</label>
         <select [(ngModel)]="estudios" name="Nivel_estudios" (change)="dataChangedNivelEstudios($event)"
