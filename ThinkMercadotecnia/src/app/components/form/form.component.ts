@@ -356,7 +356,7 @@ export class FormComponent implements OnInit {
 
   public formulario: any = {};
   saveForm(form: any) {
-
+ //laptop act
     console.log(form.value)
     // if (form.value.Telefono == ''){
     //       Swal.fire({
