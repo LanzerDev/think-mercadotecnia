@@ -256,15 +256,22 @@ export class FormComponent implements OnInit {
   //--------------select-ingresos--------------
   public ingresos_list = [
     "Menos de $5mil MXN",
-    "$5mil a $10mil MXN",
-    "$10mil a $15mil MXN",
-    "$15mil a $20mil MXN",
-    "$21mil a $30mil MXN",
-    "$31mil a $40mil MXN",
-    "$41mil a $50mil MXN",
-    "$51mil a $60mil MXN",
-    "$61mil a $70mil MXN",
-    "$71mil a $80mil MXN",
+    "$5mil MXN",
+    "$10mil MXN",
+    "$15mil MXN",
+    "$20mil MXN",
+    "$25mil MXN",
+    "$30mil MXN",
+    "$35mil MXN",
+    "$40mil MXN",
+    "$45mil MXN",
+    "$50mil MXN",
+    "$55mil MXN",
+    "$60mil MXN",
+    "$65mil MXN",
+    "$70mil MXN",
+    "$75mil MXN",
+    "$80mil MXN",
     "Más de 80mil MXN"
   ]
 
@@ -349,59 +356,58 @@ export class FormComponent implements OnInit {
 
   public formulario: any = {};
   saveForm(form: any) {
+
     console.log(form.value)
-    console.log(typeof form.value.Municipio)
-    if (form.value.Telefono == ''){
-          Swal.fire({
-            title: 'Ups!',
-            text: 'Falta ingresar el telefono',
-            icon: 'error',
-            confirmButtonText: 'ok',
-            timer: 2000,
-          });
-        } else if (typeof form.value.Municipio === 'object'){
-          console.log(form.value.Estado)
-      Swal.fire({
-        title: 'Ups!',
-        text: 'Si ingresas un estado tienes que seleccionar tu municipio',
-        icon: 'error',
-        confirmButtonText: 'ok',
-        timer: 3000,
-      });
-    } else {
-      this._usuariosService.createUser(form.value).subscribe((res:any)=>{
-        if(res.estatus == "0"){
-          Swal.fire({
-            title: 'Ups!',
-            text: 'Este correo ya a sido registrado',
-            icon: 'error',
-            confirmButtonText: 'ok',
-            timer: 2000,
-          });
-        }
-        if(res.estatus == "1"){
-          Swal.fire({
-            title: 'Ups!',
-            text: 'Este numero ya a sido registrado',
-            icon: 'error',
-            confirmButtonText: 'ok',
-            timer: 2000,
-          });
-        }
-        if(res.estatus == "2"){
-          Swal.fire({
-            title: 'Listo!',
-            text: 'Gracias por registrarte!',
-            icon: 'success',
-            confirmButtonText: 'ok',
-            timer: 2000,
-          });
-          setTimeout(()=>{
-            location.reload()
-          },2100)
-        }
-      })
-    }
+    // if (form.value.Telefono == ''){
+    //       Swal.fire({
+    //         title: 'Ups!',
+    //         text: 'Falta ingresar el telefono',
+    //         icon: 'error',
+    //         confirmButtonText: 'ok',
+    //         timer: 2000,
+    //       });
+    //     } else if (typeof form.value.Municipio === 'object'){
+    //   Swal.fire({
+    //     title: 'Ups!',
+    //     text: 'Si ingresas un estado tienes que seleccionar tu municipio',
+    //     icon: 'error',
+    //     confirmButtonText: 'ok',
+    //     timer: 3000,
+    //   });
+    // } else {
+    //   this._usuariosService.createUser(form.value).subscribe((res:any)=>{
+    //     if(res.estatus == "0"){
+    //       Swal.fire({
+    //         title: 'Ups!',
+    //         text: 'Este correo ya a sido registrado',
+    //         icon: 'error',
+    //         confirmButtonText: 'ok',
+    //         timer: 2000,
+    //       });
+    //     }
+    //     if(res.estatus == "1"){
+    //       Swal.fire({
+    //         title: 'Ups!',
+    //         text: 'Este numero ya a sido registrado',
+    //         icon: 'error',
+    //         confirmButtonText: 'ok',
+    //         timer: 2000,
+    //       });
+    //     }
+    //     if(res.estatus == "2"){
+    //       Swal.fire({
+    //         title: 'Listo!',
+    //         text: 'Gracias por registrarte!',
+    //         icon: 'success',
+    //         confirmButtonText: 'ok',
+    //         timer: 2000,
+    //       });
+    //       setTimeout(()=>{
+    //         location.reload()
+    //       },2100)
+    //     }
+    //   })
+    // }
   }
 
   public getMunicipios(estado:any){
