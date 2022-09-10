@@ -9,8 +9,8 @@ export class UsuarioService {
   constructor(
     public _http: HttpClient,
   ) { }
- // public url:string = "https://thinkform.shop"
-  public url:string = "http://localhost:3000"
+  public url:string = "https://thinkform.shop"
+//  public url:string = "http://localhost:3000"
 
   public createUser(form:any){
     let headers = new HttpHeaders().set('content-type', 'application/json')

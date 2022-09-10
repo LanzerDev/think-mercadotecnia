@@ -255,7 +255,6 @@ export class FormComponent implements OnInit {
 
   //--------------select-ingresos--------------
   public ingresos_list = [
-    "Menos de $5mil MXN",
     "$5mil MXN",
     "$10mil MXN",
     "$15mil MXN",
@@ -272,7 +271,6 @@ export class FormComponent implements OnInit {
     "$70mil MXN",
     "$75mil MXN",
     "$80mil MXN",
-    "Más de 80mil MXN"
   ]
 
   public ingresos = '';
@@ -356,58 +354,56 @@ export class FormComponent implements OnInit {
 
   public formulario: any = {};
   saveForm(form: any) {
- //laptop act
-    console.log(form.value)
-    // if (form.value.Telefono == ''){
-    //       Swal.fire({
-    //         title: 'Ups!',
-    //         text: 'Falta ingresar el telefono',
-    //         icon: 'error',
-    //         confirmButtonText: 'ok',
-    //         timer: 2000,
-    //       });
-    //     } else if (typeof form.value.Municipio === 'object'){
-    //   Swal.fire({
-    //     title: 'Ups!',
-    //     text: 'Si ingresas un estado tienes que seleccionar tu municipio',
-    //     icon: 'error',
-    //     confirmButtonText: 'ok',
-    //     timer: 3000,
-    //   });
-    // } else {
-    //   this._usuariosService.createUser(form.value).subscribe((res:any)=>{
-    //     if(res.estatus == "0"){
-    //       Swal.fire({
-    //         title: 'Ups!',
-    //         text: 'Este correo ya a sido registrado',
-    //         icon: 'error',
-    //         confirmButtonText: 'ok',
-    //         timer: 2000,
-    //       });
-    //     }
-    //     if(res.estatus == "1"){
-    //       Swal.fire({
-    //         title: 'Ups!',
-    //         text: 'Este numero ya a sido registrado',
-    //         icon: 'error',
-    //         confirmButtonText: 'ok',
-    //         timer: 2000,
-    //       });
-    //     }
-    //     if(res.estatus == "2"){
-    //       Swal.fire({
-    //         title: 'Listo!',
-    //         text: 'Gracias por registrarte!',
-    //         icon: 'success',
-    //         confirmButtonText: 'ok',
-    //         timer: 2000,
-    //       });
-    //       setTimeout(()=>{
-    //         location.reload()
-    //       },2100)
-    //     }
-    //   })
-    // }
+    if (form.value.Telefono == ''){
+          Swal.fire({
+            title: 'Ups!',
+            text: 'Falta ingresar el telefono',
+            icon: 'error',
+            confirmButtonText: 'ok',
+            timer: 2000,
+          });
+        } else if (typeof form.value.Municipio === 'object'){
+      Swal.fire({
+        title: 'Ups!',
+        text: 'Si ingresas un estado tienes que seleccionar tu municipio',
+        icon: 'error', 
+        confirmButtonText: 'ok',
+        timer: 3000,
+      });
+    } else {
+      this._usuariosService.createUser(form.value).subscribe((res:any)=>{
+        if(res.estatus == "0"){
+          Swal.fire({
+            title: 'Ups!',
+            text: 'Este correo ya a sido registrado',
+            icon: 'error',
+            confirmButtonText: 'ok',
+            timer: 2000,
+          });
+        }
+        if(res.estatus == "1"){
+          Swal.fire({
+            title: 'Ups!',
+            text: 'Este numero ya a sido registrado',
+            icon: 'error',
+            confirmButtonText: 'ok',
+            timer: 2000,
+          });
+        }
+        if(res.estatus == "2"){
+          Swal.fire({
+            title: 'Listo!',
+            text: 'Gracias por registrarte!',
+            icon: 'success',
+            confirmButtonText: 'ok',
+            timer: 2000,
+          });
+          setTimeout(()=>{
+            location.reload()
+          },2100)
+        }
+      })
+    }
   }
 
   public getMunicipios(estado:any){
